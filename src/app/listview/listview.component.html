@@ -1,0 +1,56 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" />
+</head>
+
+
+
+
+<div class="flex-container">
+  <div class="child-felx" style="flex-grow: 8">
+  <h3>List View</h3>
+<table>
+
+  <th *ngFor="let column of headers">
+    {{column}}
+  </th>
+  <tr *ngFor="let row of rows">
+    <td *ngFor="let column of headers">
+      {{row[column]}}
+    </td>
+  </tr>
+
+</table>
+  </div>
+  <div class="child-felx" style="flex-grow: 4">
+    <h3>Pie Chart</h3>
+
+
+
+    <!-- <div class="pie">
+      <ejs-accumulationchart id="chart-container" [legendSettings]='legendSettings' class="piechart">
+        <e-accumulation-series-collection>
+            <e-accumulation-series [dataSource]='piedata' xName='x' yName='y'>
+
+            </e-accumulation-series>
+        </e-accumulation-series-collection>
+      </ejs-accumulationchart>
+
+
+    </div> -->
+
+    <body>
+      <div class="piechart">
+       <!-- <div>
+         <h4>Male 40%</h4>
+       </div>
+       <br>
+       <div>
+        <h4>Female 60%</h4>
+      </div> -->
+
+      </div>
+  </body>
+  </div>
+</div>
+
+

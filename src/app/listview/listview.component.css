@@ -1,0 +1,59 @@
+.flex-container {
+  display: flex;
+  align-items: stretch;
+  background-color: #dbfdff;
+  font-family: 'Abel';
+
+}
+
+.child-felx {
+  background-color: white;
+  color: black;
+  margin: 10px;
+  text-align: center;
+  line-height: 36px;
+  font-size: 19px;
+  border: 1px solid gray;
+    border-radius: 8px;
+}
+.child-felx h3{
+  text-align: left;
+  font-weight: 100;
+  font-size: 30px;
+  margin-left: 4%;
+}
+table {
+
+  border-collapse: collapse;
+  width: 90%;
+  margin-left: 4%;
+  margin-bottom: 4%;
+}
+
+td, th {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+
+
+.piechart {
+  margin-top: 300px;
+  display: block;
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-image: conic-gradient(
+    #248ce4 0 240deg,
+
+    #394d5f 0deg);
+}
+
+body,
+.piechart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

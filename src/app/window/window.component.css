@@ -1,0 +1,126 @@
+.container {
+  font-family: 'Abel';
+    padding-bottom: 20%;
+
+}
+
+
+.flex-item-left {
+  padding: 10px;
+  flex: 50%;
+}
+
+.flex-item-right {
+  padding: 10px;
+  flex: 50%;
+}
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+.info-portal{
+  text-align: center;
+}
+.inner-box1{
+  background-color:#f1635587;
+}
+.inner-box2{
+  background-color:#40ce4b6e;
+}
+.list-image{
+  width: 60px;
+}
+.listview-button-red{
+  height: 35px;
+  width: 150px;
+  border: 0px;
+  background:#941010;
+  border-radius: 20px;
+  color: white;
+  font-size: 15px;
+  font-family: 'Abel';
+}
+.listview-button-green{
+  height: 35px;
+  width: 150px;
+  border: 0px;
+  background: #30a912;
+  border-radius: 20px;
+  color: white;
+  font-size: 15px;
+  font-family: 'Abel';
+}
+.flex-container {
+  display: flex;
+  padding-left:23%
+}
+
+.inner-box1{
+  background-color: #94101054;
+  color: white;
+  width: 400px;
+  height: 250px;
+  margin: 10px;
+  text-align: center;
+  font-size: 30px;
+  padding-top: 5%;
+  border-radius: 20px;
+}
+.inner-box2{
+  background-color: #30a91252;
+  color: white;
+  width: 400px;
+  height: 250px;
+  margin: 10px;
+  text-align: center;
+  font-size: 30px;
+  padding-top: 5%;
+  border-radius: 20px;
+}
+.info-portal h1{
+  font-weight: 200;
+}
+.listview-button-green:active {
+  border: 0px;
+}
+.listview-button-green:focus {
+  border: 0px;
+}
+
+@media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape) {
+  .flex-container{
+    padding-left: 10%;
+}
+
+}
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+  .flex-container{
+    display: flex;
+    padding-left: 15%;
+}
+.container{
+  padding-top: 0%;
+  padding-bottom: 22%;
+}
+
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .flex-container{
+    padding-left: 0%;
+}
+.inner-box1{
+  width: 258px;
+  height: 150px;
+}
+.inner-box2{
+  width: 258px;
+  height: 150px;
+}
+.container{
+  overflow-x: hidden;
+}
+.info-portal h1{
+  font-size: 20px;
+}
+}

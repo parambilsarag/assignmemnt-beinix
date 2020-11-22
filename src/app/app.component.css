@@ -1,0 +1,55 @@
+.info{
+  font-family: 'Abel';
+  margin: 0px;
+  text-align: center;
+    padding-top: 10%;
+    padding-bottom: 1%;
+}
+.body{
+
+  height: 1000px;
+}
+.container{
+  margin-left: 10%;
+  margin-right: 10%;
+
+}
+.head{
+  background-color: #00f3ff24;
+}
+
+
+@media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape) {
+ .info{
+    padding-top: 20%;
+  }
+
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .info {
+    font-size: 21px;
+    padding-bottom: 14px;
+  }
+  .body{
+    height: 760px;
+
+}
+
+.info{
+  padding-top: 35%;
+}
+}
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+
+  .info{
+    padding-top: 25%;
+  }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .info{
+    padding-top: 4%;
+  }
+  .body{
+    height: 622px;
+}
+}

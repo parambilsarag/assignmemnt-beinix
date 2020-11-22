@@ -1,0 +1,84 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" />
+</head>
+<div class="boxparent">
+  <div class="box">
+    <div class="xev">
+      <form [formGroup]="userRegistrationForm">
+        <div class="form-group container">
+          <h2 class="heading">FORM</h2>
+
+          <input type="text" formControlName="name" id="name" name="name" placeholder="Name" />
+          <div *ngIf="
+              userRegistrationForm.controls.name.invalid &&
+              (userRegistrationForm.controls.name.dirty ||
+                userRegistrationForm.controls.name.touched)
+            " class="validation-error">
+            <div *ngIf="userRegistrationForm.controls.name.errors.required">
+              *Name is required
+            </div>
+          </div>
+          <div>
+            <div class="radio-button">
+              <input ngModel type="radio" id="male" name="gender" formControlName="gender" value="male" required />
+              <label for="male">Male</label>
+            </div>
+            <div class="radio-button2">
+              <input ngModel type="radio" id="female" name="gender" formControlName="gender" value="female" required />
+              <label for="female">Female</label><br />
+            </div>
+            <div *ngIf="
+                userRegistrationForm.controls.gender.invalid &&
+                (userRegistrationForm.controls.gender.dirty ||
+                  userRegistrationForm.controls.gender.touched)
+              " class="validation-error">
+              <div *ngIf="userRegistrationForm.controls.gender.errors.required">
+                *Gender is required
+              </div>
+            </div>
+          </div>
+          <div>
+            <input type="text" ngModel placeholder="Email" name="email" id="email" formControlName="email" />
+            <div *ngIf="
+                userRegistrationForm.controls.email.invalid &&
+                (userRegistrationForm.controls.email.dirty ||
+                  userRegistrationForm.controls.email.touched)
+              " class="validation-error">
+              <div *ngIf="userRegistrationForm.controls.email.errors.required">
+                *Email is required.
+              </div>
+              <div *ngIf="userRegistrationForm.controls.email.errors.email">
+                *Email must be a valid email address.
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <input type="text" placeholder="Contact Number" name="contact" id="contact" formControlName="contact"
+              required />
+            <div *ngIf="
+                userRegistrationForm.controls.contact.invalid &&
+                (userRegistrationForm.controls.contact.dirty ||
+                  userRegistrationForm.controls.contact.touched)
+              " class="validation-error">
+              <div *ngIf="userRegistrationForm.controls.contact.errors.required">
+                *Contact is required.
+              </div>
+              <div *ngIf="userRegistrationForm.controls.contact.errors.pattern">
+                *Enter a valid contact number.
+              </div>
+            </div>
+          </div>
+
+          <input type="text" ngModel placeholder="Message" name="message" id="message" formControlName="message" />
+
+          <div class="butoon_box">
+            <button type="submit" (click)="register()" class="registerbtn">
+              Register
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
