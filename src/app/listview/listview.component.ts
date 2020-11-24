@@ -87,13 +87,13 @@ export class ListviewComponent implements OnInit {
     // }
     // var i=1;
     // console.log(this.gender[i].name);
-    for (let malecount = 0, femalecount = 0, j = 1; j <= k; j++) {
-      var i=j;
-      console.log(this.gender[i].gender);
+    // for (let malecount = 0, femalecount = 0, j = 0; j <= k; j++) {
+    //   var i=j;
+    //   console.log(this.gender[i].gender);
       // if (this.gender[i].gender) {
       //   this.malecount = malecount + 1;
       // }
-    }
+    // }
 
 
     // for (let malecount = 0,  femalecount=0, j = 0; j <= k; j++) {
