@@ -9,6 +9,7 @@ import { ListviewComponent } from './listview/listview.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccumulationChartModule, PieSeriesService } from '@syncfusion/ej2-angular-charts';
 import { AccumulationDataLabelService} from '@syncfusion/ej2-angular-charts';
+import { DataserviceService } from './dataservice.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { AccumulationDataLabelService} from '@syncfusion/ej2-angular-charts';
     ReactiveFormsModule,
     AccumulationChartModule
   ],
-  providers: [PieSeriesService,AccumulationDataLabelService],
+  providers: [PieSeriesService,AccumulationDataLabelService,DataserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

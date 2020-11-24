@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TmaIndicatorService } from '@syncfusion/ej2-angular-charts';
+import {DataserviceService} from '../dataservice.service'
 
 @Component({
   selector: 'app-form',
@@ -15,28 +16,25 @@ export class FormComponent implements OnInit, OnDestroy {
   count: any = 1;
   regArray: any = [];
   localStorageData: any = [];
+  copy:any;
 
 
   userRegistrationForm;
-  constructor() { }
+  constructor(private DataserviceService:DataserviceService) {
+    console.log("reg array from service",DataserviceService.RegArray);
+
+    this.copy=DataserviceService.RegArray;
+
+  }
 
   ngOnInit(): void {
+
     this.initUserRegistrationForm();
-    // this.localStorageData = JSON.parse(localStorage.getItem("registrationData") || "[]");
-    // if(this.localStorageData.length>0){
-    //   this.regArray=this.localStorageData;
-    // }
+    this.localStorageData = JSON.parse(localStorage.getItem("registrationData") || "[]");
+    if(this.localStorageData.length>0){
+      this.regArray=this.localStorageData;
+    }
   }
-  // Register(value) {
-
-  //   this.regArray.push(value);
-  //   console.log(this.regArray);
-  //   localStorage.setItem(this.count, JSON.stringify(value));
-  //   alert("Registration completed")
-  //   this.count += 1;
-  //   console.log("count", this.count);
-
-  // }
 
   initUserRegistrationForm() {
     this.userRegistrationForm = new FormGroup({
@@ -56,14 +54,18 @@ export class FormComponent implements OnInit, OnDestroy {
     }
 
     this.regArray.push(this.userRegistrationForm.value);
+    console.log("reg array",this.regArray);
+
 
     alert("Registration completed")
     this.userRegistrationForm.reset();
+
+
   }
 
   ngOnDestroy(): void {
-    // console.log(this.regArray);
-    // localStorage.setItem("registrationData", JSON.stringify(this.regArray));
+    console.log("reg array",this.regArray);
+    localStorage.setItem("registrationData", JSON.stringify(this.regArray));
   }
 
 

@@ -21,7 +21,7 @@
 
 @media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape) {
  .info{
-    padding-top: 20%;
+    padding-top: 5%;
   }
 
 }
@@ -42,7 +42,7 @@
 @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
 
   .info{
-    padding-top: 25%;
+    padding-top: 5%;
   }
 }
 @media (min-width: 320px) and (max-width: 480px) {

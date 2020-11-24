@@ -57,3 +57,60 @@ body,
   justify-content: center;
   align-items: center;
 }
+@media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape) {
+  .flex-container{
+       flex-direction: column;
+}
+.container{
+  margin-left: 8%;
+  margin-right: 0%;
+  overflow-x: hidden;
+}
+.dex{
+  height: 400px;
+}
+}
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+  .flex-container{
+       flex-direction: column;
+}
+td, th{
+  padding: 4px;
+}
+.dex{
+  height: 400px;
+}
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .flex-container{
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+  td, th{
+    padding: 2px;
+  }
+  .child-felx{
+    font-size: 7px;
+  }
+  .child-felx h3 {
+    font-size: 16px;
+    margin-left: 5%;
+}
+.child-felx{
+  line-height: 20px;
+  width: 233px;
+}
+table {
+  width: 94%;
+  margin-left: 2%;
+  margin-bottom: 0%;
+}
+.piechart{
+  margin-top: 50px;
+  width: 100px;
+  height: 100px;
+}
+.dex{
+  height: 150px;
+}
+}
