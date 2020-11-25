@@ -2,10 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-family: 'Abel';
 }
-
 
 .xev{
   width: 400px;
@@ -20,9 +18,7 @@
   text-align: center;
     height: auto;
 }
-
-/* Full-width input fields */
-input[type=text], input[type=password], input[type=number]:focus, input[type=textarea]:focus{
+input[type=text], input[type=password]{
   width: 80%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -32,18 +28,15 @@ input[type=text], input[type=password], input[type=number]:focus, input[type=tex
 
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=number]:focus, input[type=textarea]:focus{
+input[type=text]:focus, input[type=password]:focus{
   background-color: #ddd;
   outline: none;
 }
-
-/* Overwrite default styles of hr */
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
 
-/* Set a style for the submit button */
 .registerbtn {
   background-color: #707570;
   color: white;
@@ -60,7 +53,6 @@ hr {
   opacity: 1;
 }
 
-/* Add a blue text color to links */
 a {
   color: dodgerblue;
 }
@@ -109,5 +101,8 @@ a {
 .validation-error {
   text-align: initial;
   color: red;
-  margin-left: 6%;
+  margin-left: 2%;
+}
+.input-contols{
+  padding-bottom: 15px;
 }

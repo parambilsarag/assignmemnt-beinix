@@ -1,58 +1,47 @@
-<head>
-  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" />
-</head>
-
 <div class="flex-container">
   <div class="child-felx" style="flex-grow: 8">
     <h3>List View</h3>
-    <!-- <table>
+    <div class="sort-button-class">
+      <button (click)="sortTable(1)" class="sort-button">Sort Table</button>
+    </div>
 
-  <th *ngFor="let column of headers">
-    {{column}}
-  </th>
-  <tr *ngFor="let row of rows">
-    <td *ngFor="let column of headers">
-      {{row[column]}}
-    </td>
-  </tr>
-
-</table> -->
-    <table>
+    <table id="myTable">
       <th *ngFor="let column of headers">
         {{ column }}
       </th>
-      <tr *ngFor="let row of this.arrayval;let i = index">
-        <td>{{i+1}}</td>
-        <td>{{row.name}}</td>
-        <td>{{row.gender}}</td>
-        <td>{{row.email}}</td>
-        <td>{{row.contact}}</td>
-        <td>{{row.message}}</td>
+      <tr *ngFor="let row of this.arrayval | sort: sortedColumn; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ row.name }}</td>
+        <td>{{ row.gender }}</td>
+        <td>{{ row.email }}</td>
+        <td>{{ row.contact }}</td>
+        <td>{{ row.message }}</td>
       </tr>
     </table>
   </div>
+
   <div class="child-felx dex" style="flex-grow: 4">
     <h3>Pie Chart</h3>
+    <div class="lablel">
+      <div class="female"></div>
+      <span>female</span>&nbsp;
+      <div class="male"></div>
+      <span>male</span>
+    </div>
 
-    <!-- <div class="pie">
-      <ejs-accumulationchart id="chart-container" [legendSettings]='legendSettings' class="piechart">
+    <div class="pie">
+      <ejs-accumulationchart id="chart-container" [legendSettings]="legendSettings" class="piechart">
         <e-accumulation-series-collection>
-            <e-accumulation-series [dataSource]='piedata' xName='x' yName='y'>
-
-            </e-accumulation-series>
+          <e-accumulation-series [dataSource]="piedata" xName="x" yName="y" [dataLabel]="chartLabel">
+          </e-accumulation-series>
         </e-accumulation-series-collection>
       </ejs-accumulationchart>
+    </div>
 
-
-    </div> -->
-
-    <body>
+    <!-- <body>
       <div class="piechart">
 
       </div>
-    </body>
-
+    </body> -->
   </div>
 </div>
-<!--
-{{ this.localStorageData }} -->

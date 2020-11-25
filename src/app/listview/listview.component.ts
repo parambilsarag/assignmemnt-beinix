@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataserviceService } from '../dataservice.service'
+import { inside } from '@syncfusion/ej2-angular-charts';
+import { DataserviceService } from '../dataservice.service';
 
 @Component({
   selector: 'app-listview',
@@ -17,69 +18,63 @@ export class ListviewComponent implements OnInit {
   arrayval: any = [];
   other: any;
   k: any;
-  malecount: any;
-  femalecount: any;
+  // malecount: any;
+  // femalecount: any;
   gender: any = [];
   headers = ["NO", "Name", "Gender", "Email", "Number", "Message"];
-  // rows = [
-  //   {
-  //     "NO": "1",
-  //     "Name": "sarag",
-  //     "Gender": "M",
-  //     "Email": "sar@gmail",
-  //     "Number": "123",
-  //     "Message": "hai"
-
-  //   },
-  //   {
-  //     "NO": "2",
-  //     "Name": "sarag",
-  //     "Gender": "M",
-  //     "Email": "sar@gmail",
-  //     "Number": "123",
-  //     "Message": "hai"
-
-  //   },
-  //   {
-  //     "NO": "3",
-  //     "Name": "sarag",
-  //     "Gender": "M",
-  //     "Email": "sar@gmail",
-  //     "Number": "123",
-  //     "Message": "hai"
-
-  //   },
-  //   {
-  //     "NO": "4",
-  //     "Name": "sarag",
-  //     "Gender": "M",
-  //     "Email": "sar@gmail",
-  //     "Number": "123",
-  //     "Message": "hai"
-
-  //   }
-
-  // ]
+  sortedColumn: string;
   userRegistrationForm;
   constructor() {
+
+  }
+  sortTable(n) {
+    console.log("inside sort");
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("myTable");
+    switching = true;
+    console.log(table);
+
+    while (switching) {
+      switching = false;
+      rows = table.rows;
+      for (i = 0; i < (rows.length - 1); i++) {
+        shouldSwitch = false;
+        x = rows[i].getElementsByTagName("td")[1];
+        y = rows[i + 1].getElementsByTagName("td")[1];
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+      if (shouldSwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    }
+
 
   }
 
   ngOnInit(): void {
     this.localStorageData = localStorage.getItem("registrationData");
     this.arrayval = JSON.parse(this.localStorageData)
-    console.log("loacl sotorage data=", this.arrayval);
-    console.log(this.arrayval.length);
-
+    console.log("array val data=", this.arrayval);
 
     var k = this.arrayval.length;
     console.log("length=", k);
-    // var gender=this.arrayval[0].gender;
-    // console.log(gender);
-    // if(gender=="female"){
-    //   console.log("female");
 
-    // }
+    var malecount = 0;
+    var femalecount = 0;
+    for (var i = 0; i < k; i++) {
+      if (this.arrayval[i].gender == "male") {
+        malecount = malecount + 1;
+      }
+      else {
+        femalecount = femalecount + 1;
+      }
+    }
+    console.log("female=", femalecount);
+    console.log("male=", malecount);
 
 
     // for (let i = 0; i < k; i++) {
@@ -90,9 +85,9 @@ export class ListviewComponent implements OnInit {
     // for (let malecount = 0, femalecount = 0, j = 0; j <= k; j++) {
     //   var i=j;
     //   console.log(this.gender[i].gender);
-      // if (this.gender[i].gender) {
-      //   this.malecount = malecount + 1;
-      // }
+    // if (this.gender[i].gender) {
+    //   this.malecount = malecount + 1;
+    // }
     // }
 
 
@@ -112,12 +107,16 @@ export class ListviewComponent implements OnInit {
 
 
 
-    // this.piedata = [{ x: 'Sep', y: 21, text: 'Sep: 21' }, { x: 'Oct', y: 15, text: 'Oct: 15' }];
+    this.piedata = [{ x: 'Sep', y: malecount, text: 'Sep: 21' }, { x: 'Oct', y: femalecount, text: 'Oct: 15' }];
     // this.piedata = [{ name: 'Apple', Value: 37, text: '37%' }, { name: 'Orange', value: 17, text: '17%' }];
 
-    // this.legendSettings = {
-    //   visible: false
-    // };
+    this.legendSettings = {
+      visible: false
+    };
+    this.chartLabel = {
+      visible: true,
+      position: 'Inside',
+    };
   }
 
 }

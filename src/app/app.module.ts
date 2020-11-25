@@ -10,20 +10,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccumulationChartModule, PieSeriesService } from '@syncfusion/ej2-angular-charts';
 import { AccumulationDataLabelService} from '@syncfusion/ej2-angular-charts';
 import { DataserviceService } from './dataservice.service';
+import { CommonModule } from '@angular/common';
+import { SortPipe } from './shared/pipes/sort.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     WindowComponent,
     FormComponent,
-    ListviewComponent
+    ListviewComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AccumulationChartModule
+    AccumulationChartModule,
+    CommonModule
   ],
   providers: [PieSeriesService,AccumulationDataLabelService,DataserviceService],
   bootstrap: [AppComponent]
