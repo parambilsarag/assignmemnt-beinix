@@ -21,6 +21,7 @@
     "@angular/router": "~10.2.0",
     "@syncfusion/ej2-angular-charts": "^18.3.50",
     "rxjs": "~6.6.0",
+    "sweetalert": "^2.1.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

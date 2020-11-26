@@ -1,14 +1,20 @@
 <div class="flex-container">
   <div class="child-felx" style="flex-grow: 8">
     <h3>List View</h3>
-    <div class="sort-button-class">
+    <!-- <div class="sort-button-class">
       <button (click)="sortTable(1)" class="sort-button">Sort Table</button>
-    </div>
+    </div> -->
 
     <table id="myTable">
-      <th *ngFor="let column of headers">
+      <!-- <th *ngFor="let column of headers">
         {{ column }}
-      </th>
+      </th> -->
+      <th>NO <span><button class="arrow" (click)="sortTable(0)">^</button></span> </th>
+      <th>Name <span><button class="arrow" (click)="sortTable(1)">^</button></span> </th>
+      <th>Gender</th>
+      <th>Email</th>
+      <th>Number</th>
+      <th>Message</th>
       <tr *ngFor="let row of this.arrayval | sort: sortedColumn; let i = index">
         <td>{{ i + 1 }}</td>
         <td>{{ row.name }}</td>

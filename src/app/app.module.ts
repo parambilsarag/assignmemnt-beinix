@@ -12,6 +12,9 @@ import { AccumulationDataLabelService} from '@syncfusion/ej2-angular-charts';
 import { DataserviceService } from './dataservice.service';
 import { CommonModule } from '@angular/common';
 import { SortPipe } from './shared/pipes/sort.pipe';
+import { LogRegModule } from './log-reg/log-reg.module';
+
+
 
 @NgModule({
   declarations: [
@@ -19,7 +22,7 @@ import { SortPipe } from './shared/pipes/sort.pipe';
     WindowComponent,
     FormComponent,
     ListviewComponent,
-    SortPipe
+    SortPipe,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,9 @@ import { SortPipe } from './shared/pipes/sort.pipe';
     FormsModule,
     ReactiveFormsModule,
     AccumulationChartModule,
-    CommonModule
+    CommonModule,
+    LogRegModule
+
   ],
   providers: [PieSeriesService,AccumulationDataLabelService,DataserviceService],
   bootstrap: [AppComponent]

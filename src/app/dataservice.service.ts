@@ -5,6 +5,21 @@ import { Injectable } from '@angular/core';
 })
 export class DataserviceService {
 
-  RegArray: any = [{ name: 'sarag', age: 21 }, { name: 'unni', age: 22 }];
+
+  formArray: any = [];
+  // static setdata: any;
+
+
   constructor() { }
+  public getdata() {
+
+    this.formArray= JSON.parse(localStorage.getItem('registrationData'));
+    return this.formArray;
+  }
+  // tslint:disable-next-line: typedef
+  public setdata(arrayval) {
+     this.formArray = JSON.parse(localStorage.getItem('registrationData'));
+     console.log("form array from fomr", this.formArray);
+
+  }
 }

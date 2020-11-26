@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TmaIndicatorService } from '@syncfusion/ej2-angular-charts';
-import {DataserviceService} from '../dataservice.service'
+import {DataserviceService} from '../dataservice.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-form',
@@ -20,19 +21,26 @@ export class FormComponent implements OnInit, OnDestroy {
 
 
   userRegistrationForm;
-  constructor(private DataserviceService:DataserviceService) {
-    console.log("reg array from service",DataserviceService.RegArray);
+  constructor(public DataserviceService:DataserviceService) {
+    // console.log("reg array from service",DataserviceService.RegArray);
 
-    this.copy=DataserviceService.RegArray;
+    // this.copy=DataserviceService.RegArray;
+
 
   }
 
   ngOnInit(): void {
 
+    // let formarrayadata=this.DataserviceService.setdata();
+    // console.log("service call",formarrayadata);
+
     this.initUserRegistrationForm();
     this.localStorageData = JSON.parse(localStorage.getItem("registrationData") || "[]");
     if(this.localStorageData.length>0){
-      this.regArray=this.localStorageData;
+      this.regArray = this.localStorageData;
+      // console.log("form array data",this.DataserviceService.formArray);
+      // this.DataserviceService.formArray=["kevin"];
+
     }
   }
 
@@ -57,15 +65,17 @@ export class FormComponent implements OnInit, OnDestroy {
     console.log("reg array",this.regArray);
 
 
-    alert("Registration completed")
-    this.userRegistrationForm.reset();
 
+    swal("Registration completed!", "Good to go!", "success");
+
+    this.userRegistrationForm.reset();
 
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy(){
     console.log("reg array",this.regArray);
-    localStorage.setItem("registrationData", JSON.stringify(this.regArray));
+    var arrayval=localStorage.setItem("registrationData", JSON.stringify(this.regArray));
+    this.DataserviceService.setdata(arrayval);
   }
 
 

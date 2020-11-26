@@ -24,7 +24,8 @@ export class ListviewComponent implements OnInit {
   headers = ["NO", "Name", "Gender", "Email", "Number", "Message"];
   sortedColumn: string;
   userRegistrationForm;
-  constructor() {
+  constructor(public DataserviceService: DataserviceService) {
+
 
   }
   sortTable(n) {
@@ -39,8 +40,8 @@ export class ListviewComponent implements OnInit {
       rows = table.rows;
       for (i = 0; i < (rows.length - 1); i++) {
         shouldSwitch = false;
-        x = rows[i].getElementsByTagName("td")[1];
-        y = rows[i + 1].getElementsByTagName("td")[1];
+        x = rows[i].getElementsByTagName("td")[n];
+        y = rows[i + 1].getElementsByTagName("td")[n];
         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
           shouldSwitch = true;
           break;
@@ -56,9 +57,16 @@ export class ListviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    var datafromservice = this.DataserviceService.getdata();
+    console.log("data get method", datafromservice);
+
+
     this.localStorageData = localStorage.getItem("registrationData");
     this.arrayval = JSON.parse(this.localStorageData)
     console.log("array val data=", this.arrayval);
+
+    // var k = datafromservice.length;
 
     var k = this.arrayval.length;
     console.log("length=", k);
@@ -77,32 +85,7 @@ export class ListviewComponent implements OnInit {
     console.log("male=", malecount);
 
 
-    // for (let i = 0; i < k; i++) {
-    //   this.gender[i] = this.arrayval[i];
-    // }
-    // var i=1;
-    // console.log(this.gender[i].name);
-    // for (let malecount = 0, femalecount = 0, j = 0; j <= k; j++) {
-    //   var i=j;
-    //   console.log(this.gender[i].gender);
-    // if (this.gender[i].gender) {
-    //   this.malecount = malecount + 1;
-    // }
-    // }
 
-
-    // for (let malecount = 0,  femalecount=0, j = 0; j <= k; j++) {
-    //   var gender=this.arrayval[j].gender;
-    //   if (gender==="male") {
-    //     this.malecount = malecount + 1;
-    //   }
-    //   else {
-    //     this.femalecount = femalecount + 1;
-    //   }
-    // }
-
-    // console.log("female=", this.femalecount);
-    // console.log("male=", this.malecount);
 
 
 

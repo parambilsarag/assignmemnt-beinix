@@ -1,0 +1,83 @@
+
+<div class="boxparent">
+  <div class="box">
+    <div class="xev">
+      <form [formGroup]="RegisterationForm">
+        <div class="form-group container">
+          <h2 class="heading">REGISTRATION FORM</h2>
+
+
+
+
+
+          <div class="input-contols">
+            <input type="text" formControlName="uname" id="uname" name="uname" placeholder="Username" />
+            <span *ngIf="
+            RegisterationForm.controls.uname.invalid &&
+                (RegisterationForm.controls.uname.dirty ||
+                RegisterationForm.controls.uname.touched)
+              " class="validation-error">
+              <span *ngIf="RegisterationForm.controls.uname.errors.required">
+                *Username is required
+              </span>
+            </span>
+          </div>
+
+
+          <div class="input-contols">
+            <input type="text" ngModel placeholder="Email" name="email" id="email" formControlName="email" />
+            <span *ngIf="
+            RegisterationForm.controls.email.invalid &&
+                (RegisterationForm.controls.email.dirty ||
+                RegisterationForm.controls.email.touched)
+              " class="validation-error">
+              <span *ngIf="RegisterationForm.controls.email.errors.required">
+                *Email is required.
+              </span>
+              <span *ngIf="RegisterationForm.controls.email.errors.email">
+                *Email must be a valid email address.
+              </span>
+            </span>
+          </div>
+
+          <div class="input-contols">
+            <input type="password" formControlName="password" id="password" name="password" placeholder="password" />
+            <span *ngIf="
+            RegisterationForm.controls.password.invalid &&
+                (RegisterationForm.controls.password.dirty ||
+                RegisterationForm.controls.password.touched)
+              " class="validation-error">
+              <span *ngIf="RegisterationForm.controls.password.errors.required">
+                *password is required
+              </span>
+            </span>
+          </div>
+
+          <div class="input-contols">
+            <input type="password" formControlName="conpassword" id="conpassword" name="conpassword" placeholder="Confirm password" />
+            <span *ngIf="
+            RegisterationForm.controls.conpassword.invalid &&
+                (RegisterationForm.controls.conpassword.dirty ||
+                RegisterationForm.controls.conpassword.touched)
+              " class="validation-error">
+              <span *ngIf="RegisterationForm.controls.conpassword.errors.required">
+                *confirm password is required
+              </span>
+            </span>
+          </div>
+
+
+
+
+
+          <div class="butoon_box ">
+            <button type="submit" (click)="register()"  class="registerbtn">
+              Register
+            </button>
+            <!-- <p class="signup-link">Not a member ?. <span><a routerLink="/register" routerLinkActive="active" >Signup now</a></span></p> -->
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
