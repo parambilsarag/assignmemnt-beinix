@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import Swal from 'sweetalert2';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,11 +11,12 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   RegisterationForm;
-  newRegister:any=[];
+  newRegister: any = [];
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.initRegistrationForm()
+    this.initRegistrationForm();
+    this.newRegister = JSON.parse(localStorage.getItem("newuser") || "[]");
   }
 
   initRegistrationForm() {
@@ -26,16 +27,22 @@ export class RegisterComponent implements OnInit {
       conpassword: new FormControl('', [Validators.required])
     });
   }
-  register(){
+  register() {
 
     if (!this.RegisterationForm.valid) {
       this.RegisterationForm.markAllAsTouched();
       return false;
     }
-    alert("Registration completed");
-    this.RegisterationForm.reset();
-    // this.router.navigateByUrl('');
 
+
+    this.newRegister.push(this.RegisterationForm.value);
+    console.log("new registerd users", this.newRegister);
+    localStorage.setItem("newuser", JSON.stringify(this.newRegister));
+    console.log("registerd user in local storage",localStorage.getItem("newuser"));
+    Swal.fire({ title: 'Registration completed', text: 'Good To Go', icon: 'success'})
+    this.RegisterationForm.reset();
+    this.RegisterationForm.reset();
+    this.router.navigateByUrl('');
   }
 
 }

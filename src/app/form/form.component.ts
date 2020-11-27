@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TmaIndicatorService } from '@syncfusion/ej2-angular-charts';
-import {DataserviceService} from '../dataservice.service';
-import swal from 'sweetalert';
+import { DataserviceService } from '../dataservice.service';
+import { RegistartionserviceService } from '../registartionservice.service'
+
 
 @Component({
   selector: 'app-form',
@@ -17,30 +18,17 @@ export class FormComponent implements OnInit, OnDestroy {
   count: any = 1;
   regArray: any = [];
   localStorageData: any = [];
-  copy:any;
+  copy: any;
 
 
   userRegistrationForm;
-  constructor(public DataserviceService:DataserviceService) {
-    // console.log("reg array from service",DataserviceService.RegArray);
-
-    // this.copy=DataserviceService.RegArray;
-
-
+  constructor(public DataserviceService: DataserviceService, public RegistartionserviceService: RegistartionserviceService) {
   }
-
   ngOnInit(): void {
-
-    // let formarrayadata=this.DataserviceService.setdata();
-    // console.log("service call",formarrayadata);
-
     this.initUserRegistrationForm();
     this.localStorageData = JSON.parse(localStorage.getItem("registrationData") || "[]");
-    if(this.localStorageData.length>0){
+    if (this.localStorageData.length > 0) {
       this.regArray = this.localStorageData;
-      // console.log("form array data",this.DataserviceService.formArray);
-      // this.DataserviceService.formArray=["kevin"];
-
     }
   }
 
@@ -55,26 +43,27 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   register() {
-
     if (!this.userRegistrationForm.valid) {
       this.userRegistrationForm.markAllAsTouched();
       return false;
     }
-
     this.regArray.push(this.userRegistrationForm.value);
-    console.log("reg array",this.regArray);
+    console.log("reg array", this.regArray);
+    alert("Registration completed!");
 
-
-
-    swal("Registration completed!", "Good to go!", "success");
-
-    this.userRegistrationForm.reset();
-
+    // this.userRegistrationForm.reset();
   }
-
-  ngOnDestroy(){
-    console.log("reg array",this.regArray);
-    var arrayval=localStorage.setItem("registrationData", JSON.stringify(this.regArray));
+  onSubmit() {
+    console.log("for server", this.userRegistrationForm.value);
+    this.RegistartionserviceService.registerdata(this.userRegistrationForm.value)
+      .subscribe(
+        response => console.log('success', response),
+        error => console.error("Error", error)
+      )
+  }
+  ngOnDestroy() {
+    console.log("reg array", this.regArray);
+    var arrayval = localStorage.setItem("registrationData", JSON.stringify(this.regArray));
     this.DataserviceService.setdata(arrayval);
   }
 

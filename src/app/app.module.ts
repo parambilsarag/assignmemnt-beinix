@@ -8,11 +8,14 @@ import { FormComponent } from './form/form.component';
 import { ListviewComponent } from './listview/listview.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccumulationChartModule, PieSeriesService } from '@syncfusion/ej2-angular-charts';
-import { AccumulationDataLabelService} from '@syncfusion/ej2-angular-charts';
+import { AccumulationDataLabelService } from '@syncfusion/ej2-angular-charts';
 import { DataserviceService } from './dataservice.service';
 import { CommonModule } from '@angular/common';
 import { SortPipe } from './shared/pipes/sort.pipe';
 import { LogRegModule } from './log-reg/log-reg.module';
+import { AuthGuard } from './auth.guard';
+import {RegistartionserviceService} from './registartionservice.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -31,10 +34,11 @@ import { LogRegModule } from './log-reg/log-reg.module';
     ReactiveFormsModule,
     AccumulationChartModule,
     CommonModule,
-    LogRegModule
+    LogRegModule,
+    HttpClientModule
 
   ],
-  providers: [PieSeriesService,AccumulationDataLabelService,DataserviceService],
+  providers: [PieSeriesService, AccumulationDataLabelService, DataserviceService, AuthGuard,RegistartionserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

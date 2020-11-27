@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import swal from 'sweetalert';
+import { AuthenticationService } from '../../authentication.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import swal from 'sweetalert';
 })
 export class LoginComponent implements OnInit {
   loginForm;
-  constructor(private router: Router) { }
+  localStorageData: any = [];
+  constructor(private router: Router, public AuthenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.inintuserLoginform();
@@ -22,23 +24,40 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', [Validators.required]),
     });
   }
-  loginuser(){
+  loginuser() {
 
     if (!this.loginForm.valid) {
       this.loginForm.markAllAsTouched();
       return false;
     }
-    console.log("name",this.loginForm.value.name);
-    if((this.loginForm.value.name=="admin")&&(this.loginForm.value.password=="admin")){
-      swal("Welcome!", "Good to go!", "success");
+
+    this.localStorageData = JSON.parse(localStorage.getItem("newuser"));
+    console.log("login check data", this.localStorageData);
+    console.log("form uname", this.loginForm.value.name);
+
+
+    var length = this.localStorageData.length;
+    var flag = false;
+    var name;
+    for (var i = 0; i < length; i++) {
+      console.log(this.localStorageData[i].uname);
+
+      // tslint:disable-next-line: max-line-length
+      if ((this.localStorageData[i].uname === this.loginForm.value.name) && (this.localStorageData[i].password === this.loginForm.value.password)) {
+        flag = true;
+        name = this.localStorageData[i].uname;
+      }
+    }
+    if (flag) {
+      //swal
+      Swal.fire({ title: 'welcome ' + name, text: 'Good To Go', icon: 'success', })
+      this.AuthenticationService.setLoggedIn(true);
       this.router.navigateByUrl('window');
     }
-    else{
-      console.log("error");
-      swal("Oops!", "Something went wrong!", "error");
+    else {
+      Swal.fire({ title: 'Unauthorized access', text: 'Please enter the correct loggin details', icon: 'error', })
     }
 
-    //
   }
 
 }

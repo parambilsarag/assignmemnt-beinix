@@ -1,7 +1,7 @@
 <div class="boxparent">
   <div class="box">
     <div class="xev">
-      <form [formGroup]="userRegistrationForm">
+      <form [formGroup]="userRegistrationForm" (ngSubmit)="onSubmit()">
         <div class="form-group container">
           <h2 class="heading">FORM</h2>
 
