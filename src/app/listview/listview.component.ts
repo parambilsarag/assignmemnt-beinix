@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { inside } from '@syncfusion/ej2-angular-charts';
 import { DataserviceService } from '../dataservice.service';
+import { RegistartionserviceService } from '../registartionservice.service';
 
 @Component({
   selector: 'app-listview',
@@ -18,13 +19,12 @@ export class ListviewComponent implements OnInit {
   arrayval: any = [];
   other: any;
   k: any;
-  // malecount: any;
-  // femalecount: any;
   gender: any = [];
   headers = ["NO", "Name", "Gender", "Email", "Number", "Message"];
   sortedColumn: string;
+  usersFromService: any;
   userRegistrationForm;
-  constructor(public DataserviceService: DataserviceService) {
+  constructor(public DataserviceService: DataserviceService, public RegistartionserviceService: RegistartionserviceService) {
 
 
   }
@@ -58,16 +58,21 @@ export class ListviewComponent implements OnInit {
 
   ngOnInit(): void {
 
+    //using service
+
+    this.RegistartionserviceService.getdata().subscribe(data => {
+      this.usersFromService = data;
+    })
+    console.log("data in list from server 3000", this.usersFromService );
+
+
+
+
     var datafromservice = this.DataserviceService.getdata();
     console.log("data get method", datafromservice);
-
-
     this.localStorageData = localStorage.getItem("registrationData");
     this.arrayval = JSON.parse(this.localStorageData)
     console.log("array val data=", this.arrayval);
-
-    // var k = datafromservice.length;
-
     var k = this.arrayval.length;
     console.log("length=", k);
 
@@ -81,15 +86,6 @@ export class ListviewComponent implements OnInit {
         femalecount = femalecount + 1;
       }
     }
-    console.log("female=", femalecount);
-    console.log("male=", malecount);
-
-
-
-
-
-
-
     this.piedata = [{ x: 'Sep', y: malecount, text: 'Sep: 21' }, { x: 'Oct', y: femalecount, text: 'Oct: 15' }];
     // this.piedata = [{ name: 'Apple', Value: 37, text: '37%' }, { name: 'Orange', value: 17, text: '17%' }];
 

@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TmaIndicatorService } from '@syncfusion/ej2-angular-charts';
 import { DataserviceService } from '../dataservice.service';
-import { RegistartionserviceService } from '../registartionservice.service'
+import { RegistartionserviceService } from '../registartionservice.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -49,7 +50,8 @@ export class FormComponent implements OnInit, OnDestroy {
     }
     this.regArray.push(this.userRegistrationForm.value);
     console.log("reg array", this.regArray);
-    alert("Registration completed!");
+    Swal.fire({ title: 'Registration completed!', text: 'Good To Go', icon: 'success', })
+    // alert("Registration completed!");
 
     // this.userRegistrationForm.reset();
   }

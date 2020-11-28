@@ -35,8 +35,9 @@ export class LoginComponent implements OnInit {
     console.log("login check data", this.localStorageData);
     console.log("form uname", this.loginForm.value.name);
 
-
+    console.log("length")
     var length = this.localStorageData.length;
+    console.log("length")
     var flag = false;
     var name;
     for (var i = 0; i < length; i++) {

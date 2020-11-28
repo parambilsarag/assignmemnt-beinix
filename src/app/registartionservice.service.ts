@@ -5,11 +5,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RegistartionserviceService {
-  _url = 'http://loclahost:3000/api/form';
+  _url = 'http://localhost:3000/api/form';
 
 
   constructor(private _http: HttpClient) { }
   registerdata(userdata) {
     return this._http.post<any>(this._url, userdata);
+  }
+  getdata() {
+    return this._http.get('http://localhost:3000/api/list');
   }
 }
