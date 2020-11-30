@@ -32,30 +32,38 @@ export class ListviewComponent implements OnInit {
 
   }
   //sorting table using name
-  sortTable(n) {
-    console.log("inside sort");
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById("myTable");
-    switching = true;
-    console.log(table);
-    while (switching) {
-      switching = false;
-      rows = table.rows;
-      for (i = 0; i < (rows.length - 1); i++) {
-        shouldSwitch = false;
-        x = rows[i].getElementsByTagName("td")[n];
-        y = rows[i + 1].getElementsByTagName("td")[n];
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          shouldSwitch = true;
-          break;
-        }
-      }
-      if (shouldSwitch) {
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-      }
-    }
+
+  key:string = 'id';
+  reverse: boolean = false;
+
+  sort(key) {
+    this.key = key;
+    this.reverse = !this.reverse;
   }
+  // sortTable(n) {
+  //   console.log("inside sort");
+  //   var table, rows, switching, i, x, y, shouldSwitch;
+  //   table = document.getElementById("myTable");
+  //   switching = true;
+  //   console.log(table);
+  //   while (switching) {
+  //     switching = false;
+  //     rows = table.rows;
+  //     for (i = 0; i < (rows.length - 1); i++) {
+  //       shouldSwitch = false;
+  //       x = rows[i].getElementsByTagName("td")[n];
+  //       y = rows[i + 1].getElementsByTagName("td")[n];
+  //       if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+  //         shouldSwitch = true;
+  //         break;
+  //       }
+  //     }
+  //     if (shouldSwitch) {
+  //       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+  //       switching = true;
+  //     }
+  //   }
+  // }
 
   //sorting table by id
   sortTablebyid() {

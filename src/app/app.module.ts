@@ -16,6 +16,7 @@ import { LogRegModule } from './log-reg/log-reg.module';
 import { AuthGuard } from './auth.guard';
 import {RegistartionserviceService} from './registartionservice.service';
 import {HttpClientModule} from '@angular/common/http';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 
 
@@ -35,7 +36,8 @@ import {HttpClientModule} from '@angular/common/http';
     AccumulationChartModule,
     CommonModule,
     LogRegModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2OrderModule
 
   ],
   providers: [PieSeriesService, AccumulationDataLabelService, DataserviceService, AuthGuard,RegistartionserviceService],

@@ -101,6 +101,9 @@ a {
   margin-left: 21px;
   width: 100px;
 }
+.head{
+  height: 700px !important;
+}
 }
 .validation-error {
   text-align: initial;

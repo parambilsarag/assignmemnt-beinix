@@ -97,6 +97,9 @@ a {
   margin-left: 21px;
   width: 100px;
 }
+.boxparent{
+  height: 600px;
+}
 }
 .validation-error {
   text-align: initial;

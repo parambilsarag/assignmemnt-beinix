@@ -62,7 +62,7 @@ app.get("/api/logindetails", (request, response) => {
 
   fs.readFile('./register.json', 'utf-8', function(err, datas) {
     if (err) throw err
-    console.log(datas);
+
   })
 
   response.send(datas);
