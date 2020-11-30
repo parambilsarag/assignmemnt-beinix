@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RegistartionserviceService } from '../../registartionservice.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   RegisterationForm;
   newRegister: any = [];
-  constructor(private router: Router) { }
+  constructor(private router: Router, public RegistartionserviceService: RegistartionserviceService) { }
 
   ngOnInit(): void {
     this.initRegistrationForm();
@@ -40,9 +41,16 @@ export class RegisterComponent implements OnInit {
     localStorage.setItem("newuser", JSON.stringify(this.newRegister));
     console.log("registerd user in local storage",localStorage.getItem("newuser"));
     Swal.fire({ title: 'Registration completed', text: 'Good To Go', icon: 'success'})
-    this.RegisterationForm.reset();
-    this.RegisterationForm.reset();
-    this.router.navigateByUrl('');
+    // this.RegisterationForm.reset();
+    // this.router.navigateByUrl('');
+  }
+  onSubmit(){
+    console.log("for server",this.RegisterationForm.value);
+    this.RegistartionserviceService.newuserregistration(this.RegisterationForm.value)
+      .subscribe(
+        response => console.log('success', response),
+        error => console.error("Error", error)
+      )
   }
 
 }

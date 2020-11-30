@@ -4,7 +4,7 @@ import { TmaIndicatorService } from '@syncfusion/ej2-angular-charts';
 import { DataserviceService } from '../dataservice.service';
 import { RegistartionserviceService } from '../registartionservice.service';
 import Swal from 'sweetalert2';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -23,7 +23,7 @@ export class FormComponent implements OnInit, OnDestroy {
 
 
   userRegistrationForm;
-  constructor(public DataserviceService: DataserviceService, public RegistartionserviceService: RegistartionserviceService) {
+  constructor(public DataserviceService: DataserviceService, public RegistartionserviceService: RegistartionserviceService,private router: Router) {
   }
   ngOnInit(): void {
     this.initUserRegistrationForm();
@@ -50,7 +50,8 @@ export class FormComponent implements OnInit, OnDestroy {
     }
     this.regArray.push(this.userRegistrationForm.value);
     console.log("reg array", this.regArray);
-    Swal.fire({ title: 'Registration completed!', text: 'Good To Go', icon: 'success', })
+    Swal.fire({ title: 'Registration completed!', text: 'Good To Go', icon: 'success', });
+    // this.router.navigateByUrl('listview');
     // alert("Registration completed!");
 
     // this.userRegistrationForm.reset();
