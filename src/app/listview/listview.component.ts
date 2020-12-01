@@ -26,6 +26,7 @@ export class ListviewComponent implements OnInit {
   userRegistrationForm;
   keypairvalues: any;
   dummy: any = 0;
+  item: any = [];
 
   constructor(public DataserviceService: DataserviceService, public RegistartionserviceService: RegistartionserviceService) {
 
@@ -33,7 +34,7 @@ export class ListviewComponent implements OnInit {
   }
   //sorting table using name
 
-  key:string = 'id';
+  key: string = 'id';
   reverse: boolean = false;
 
   sort(key) {
@@ -95,17 +96,21 @@ export class ListviewComponent implements OnInit {
 
     this.RegistartionserviceService.getdata().subscribe(data => {
       var jsondatafromservice = data;
+
       this.keypairvalues = JSON.stringify(data);
+
       console.log("key pair values", this.keypairvalues);
       var count = Object.keys(data).length;
       console.log("lenght is=", count);
       console.log("gender", data[0]);
       this.arrayval = JSON.parse(this.keypairvalues);
+
       console.log("array val", this.arrayval);
 
       var malecount = 0;
       var femalecount = 0;
       for (var i = 0; i < count; i++) {
+        this.arrayval[i].id=i+1;
         if (data[i].gender == "male") {
           malecount = malecount + 1;
         }
@@ -113,6 +118,8 @@ export class ListviewComponent implements OnInit {
           femalecount = femalecount + 1;
         }
       }
+      // console.log("array val counts",this.arrayval[9].item);
+
 
       this.piedata = [{ x: 'Sep', y: malecount, text: 'Sep: 21' }, { x: 'Oct', y: femalecount, text: 'Oct: 15' }];
       this.legendSettings = {

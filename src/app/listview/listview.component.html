@@ -9,14 +9,14 @@
       <!-- <th *ngFor="let column of headers">
         {{ column }}
       </th> -->
-      <th>NO <span><button class="arrow" (click)="sort('NO')">^</button></span> </th>
+      <th>NO <span><button class="arrow" (click)="sort('id')">^</button></span> </th>
       <th>Name <span><button class="arrow" (click)="sort('name')">^</button></span> </th>
       <th>Gender</th>
       <th>Email</th>
       <th>Number</th>
       <th>Message</th>
       <tr *ngFor="let row of this.arrayval | orderBy: key: reverse ; let i = index" >
-        <td>{{ i + 1 }}</td>
+        <td>{{row.id}}</td>
         <td>{{ row.name }}</td>
         <td>{{ row.gender }}</td>
         <td>{{ row.email }}</td>
